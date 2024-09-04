@@ -1,0 +1,31 @@
+Here are some recent scholarly articles related to the use of digital tools in agriculture in Nigeria. These can provide a solid foundation for your research and references in Chapter One:
+
+### Recent Scholarly References
+
+1. **Leveraging Innovative Digital Technologies for Indigenous Knowledge Management in Post-Covid-19 Era: Implications for Sustainable Socio-Economic Development in Nigeria**  
+   - This study explores digital technologies in agriculture, emphasizing sustainable practices for socio-economic development.  
+   - [Read the full text (PDF)](https://www.researchgate.net/profile/Ahmed-Ayandokun/publication/380818475_Leveraging_Innovative_Digital_Technologies_for_Indigenous_Knowledge_Management_in_Post-Covid-19_era_Implications_for_Sustainable_LEVERAGING_INNOVATIVE_DIGITAL_TECHNOLOGIES_FOR_INDIGENOUS_KNOWLEDGE_MAN/links/664fca33479366623a0b8133/Leveraging-Innovative-Digital-Technologies-for-Indigenous-Knowledge-Management-in-Post-Covid-19-era-Implications-for-Sustainable-LEVERAGING-INNOVATIVE-DIGITAL-TECHNOLOGIES-FOR-INDIGENOUS-KNOWLEDGE-MAN.pdf)
+
+2. **Extension Agents' Perception on the Use of ICTs for Agricultural Extension Services in Kwara State, Nigeria**  
+   - This paper discusses the impact of information and communication technologies (ICTs) on agricultural extension services, which can be relevant to the development of web-based tools for labor management.  
+   - [Read the full text (PDF)](https://www.researchgate.net/profile/John-Ifabiyi/publication/382598401_Extension_Agents'_Perception_on_the_Use_of_ICTs_for_Agricultural_Extension_Services_in_Kwara_State_Nigeria/links/66a4e523de060e4c7e5dcce9/Extension-Agents-Perception-on-the-Use-of-ICTs-for-Agricultural-Extension-Services-in-Kwara-State-Nigeria.pdf)
+
+3. **Farmers' Perceived Rating and Usability Attributes of Agricultural Mobile Phone Apps**  
+   - This study evaluates the usability of mobile phone apps for agriculture, providing insights into digital tools' effectiveness and adoption in agricultural settings.  
+   - [Read the full text (HTML)](https://www.sciencedirect.com/science/article/pii/S2772375524001060)
+
+4. **Can Digital Technology Promote Market Participation Among Smallholder Farmers?**  
+   - This research investigates the role of digital tools, particularly mobile apps, in enhancing market participation among smallholder farmers in Nigeria.  
+   - [Read the full text (HTML)](https://brill.com/view/journals/ifam/aop/article-10.22434-ifamr2023.0065/article-10.22434-ifamr2023.0065.xml)
+
+5. **Willingness to Adopt Precision Agriculture: An Analysis of Gombe and Bauchi States of Nigeria**  
+   - Focused on the adoption of precision agriculture and digital tools, this study provides insights into farmers' readiness for digital transformation in agricultural practices.  
+   - [Read the full text (PDF)](https://www.ajol.info/index.php/njt/article/view/268380/253248)
+
+6. **Digitalization in Agricultural Cooperatives: A Perspective from Members in Rice Value Chain of Anambra State, Nigeria**  
+   - Discusses the use of digital tools in improving value chain activities within agricultural cooperatives, relevant for developing web-based labor tools.  
+   - [Read the full text (PDF)](http://www1.up.poznan.pl/jard/index.php/jard/article/download/1800/1221)
+
+These resources cover various aspects of digital tools in agriculture, ranging from indigenous knowledge management to precision agriculture and ICT usage, which can help build a robust theoretical framework for your study on web-based farm laborers outsourcing tools.
+
+If you need further assistance with summarizing these articles or want to explore specific themes within these studies, feel free to ask!
