@@ -1,0 +1,27 @@
+body {
+    padding-top: 56px;
+}
+
+.hero-section {
+    background-color: #f8f9fa;
+    padding: 100px 0;
+}
+
+.features-section .card {
+    margin-bottom: 20px;
+}
+
+#sidebar-wrapper {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-left: 250px;
+}
