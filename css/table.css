@@ -1,0 +1,9 @@
+.table{
+    border: 2px solid rgb(10, 40, 233);
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Tektur;
+}
+.table th, td{
+    border: 2px solid rgb(10, 40, 233);
+}

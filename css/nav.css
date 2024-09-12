@@ -18,7 +18,7 @@
 
 }
 #nav{
- background-color: rgba(14, 13, 13, 0.3);
+ background-color: rgba(5, 72, 138, 0.3);
     /* position: absolute; */
     left: 0;
     top: 0;
@@ -58,12 +58,10 @@ border: 2px solid white;
         left: 0;
     }
     .list{
-        background-color: rgba(0, 1, 1, 0.3);
+        background-color: rgba(5, 72, 138, 0.3);
         background-color: transparent;
     }
-    #vid{
-        background-color: rgb(26, 7, 7);
-    }
+ 
     .link-list{
         border: 2px solid white;
     }

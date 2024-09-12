@@ -20,11 +20,12 @@ class User extends Database{
     function add_labourer($name, $address, $phone, $password, $image, $role){
         $hashedPasswrd=password_hash($password, PASSWORD_DEFAULT);
         $sqlComd="INSERT INTO users (name,address,phone,password, image,role)
-         VALUES(?,?,?,?,?)";
+         VALUES(?,?,?,?,?,?)";
          $preStmnt=$this->connection->prepare($sqlComd);
          if($preStmnt){
-            $preStmnt->bind_param('ssssss', $name,$address,$phone,$password,$image, $role="Labourer");
+            $preStmnt->bind_param('ssssss', $name,$address,$phone,$password,$image, $role);
             $preStmnt->execute();
+            header:"location";
          }
          else{
             echo"Unable to Register at the moment";
@@ -34,10 +35,10 @@ class User extends Database{
     function add_user($name, $address, $phone, $password, $image, $role){
         $hashedPasswrd=password_hash($password, PASSWORD_DEFAULT);
         $sqlComd="INSERT INTO users (name,address,phone,password, image,role)
-         VALUES(?,?,?,?,?)";
+         VALUES(?,?,?,?,?,?)";
          $preStmnt=$this->connection->prepare($sqlComd);
          if($preStmnt){
-            $preStmnt->bind_param('ssssss', $name,$address,$phone,$password,$image, $role="User");
+            $preStmnt->bind_param('ssssss', $name,$address,$phone,$hashedPassword,$image, $role);
             $preStmnt->execute();
          }
          else{
@@ -47,7 +48,7 @@ class User extends Database{
 
     function login($email, $passwored){
         session_start();
-        $sqlLogin="SELECT email,password,id,role FROM users WHERE email=?";
+        $sqlLogin="SELECT phone,password,id,role FROM users WHERE phone=?";
         $statement=$this->connection->prepare($sqlLogin);
         if($statement){
             $statement->bind_param('s', $email);
@@ -57,7 +58,7 @@ class User extends Database{
                 $DBUser=$result->fetch_assoc();
                 $DBpassword=$DBUser['password'];
                 if(password_verify($password,$DBpassword)){
-                    $_SESSION['Email']=$email;
+                    $_SESSION['Phone']=$phone;
                     $_SESSION['id']=$DBUser['ID'];
                     header('Location:index.php');
                 }

@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.add-up{
+    display: flex;
+}
+.addproductForm{
+    margin-top: 20px;
+    width: 50%;
+}
+.addup-pic{
+    margin-top: 20px;
+    width: 40%;
+}
+
+.input{
+    margin-bottom: 20px;
+    justify-self: center;
+    margin-top: 30px;
+}
+.label{
+    display: block;
+    color: rgb(10, 40, 233);
+    font-family: dancing script;
+    font-size: 24px;
+}
+.inpt-tag{
+    width: 70%;
+    border-bottom: 2px solid rgb(10, 40, 233);
+    outline: none;
+    background: transparent;
+    /* border: none; */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: rgb(10, 40, 233);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+@media screen and (max-width:660px) {
+    .add-up{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
