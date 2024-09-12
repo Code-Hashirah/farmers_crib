@@ -1,5 +1,5 @@
 .sidenav{
-    background-color:rgb(26, 7, 7);
+    background-color:rgb(10, 40, 233);
     /* color:white; */
     /* width: 25%; */
 }
@@ -27,14 +27,14 @@
 }
 .sidenav ul li:hover{
     background-color: white;
-    color: rgb(26, 7, 7);
+    color: rgb(10, 40, 233);
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     font-weight: 800;
 }
 .clicked{
     background-color: white;
-    color: rgb(26, 7, 7);
+    color: rgb(10, 40, 233);
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     font-weight: 800;
@@ -43,7 +43,7 @@
 
 .sidenav ul li:hover .link{
     background-color: white;
-    color: rgb(26, 7, 7);
+    color: rgb(10, 40, 233);
 
 }
 
