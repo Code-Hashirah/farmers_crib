@@ -74,5 +74,44 @@ class User extends Database{
             $Uid=$_SESSION['id'];
             $id=$labId;
     }
+    // This function/method fetches all labourers from table
+    function getAllLabourers(){
+        $role2="Labourer";
+        $sqlCmd="SELECT * FROM users WHERE role=?";
+        $stm=$this->connection->prepare($sqlCmd);
+        $stm->bind_param('s', $role2);
+        $stm->execute();
+        // $result=$this->connection->query($sqlCmd);
+        while($row=$stm->get_result()){
+            $labourers=$row;
+            return $labourers;
+        }
+    }
+
+    function get_Few_Labourers(){
+        $role1="Labourer";
+        $sqlCmd="SELECT * FROM users WHERE role=? ORDER BY id DESC LIMIT 6";
+    //   $result=$this->connection->query($sqlCmd);
+    $stmFew=$this->connection->prepare($sqlCmd);
+    $stmFew->bind_param('s',$role1);
+    $stmFew->execute();
+      while($row=$stmFew->get_result()){
+        $labourer=$row;
+        // print_r($row);
+        // print_r($products);
+        return $labourer;
+      }
+    }
+function get_One_Labourer($id){
+  $sqlCmd="SELECT * FROM users WHERE id=? AND role=?";
+ $stm=$this->connection->prepare($sqlCmd);
+ $stm->bind_param('ss',$id, "Labourer");
+ $stm->execute();
+ while($result=$stm->get_result()){
+    $labourers=$result;
+    return $labourers;
+ }
+
+}
 
 }

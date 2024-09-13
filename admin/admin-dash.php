@@ -1,6 +1,8 @@
 <?php
 $title="Farmers Crib ::Admin";
+require_once "../database.php";
     require_once "adminHeader.php";
+    require_once "userClass.php";
 ?>
 
 <main class="row container-fluid">

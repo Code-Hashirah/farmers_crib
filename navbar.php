@@ -9,10 +9,10 @@
         <li class="list"><a class="nav-link" href="index.php">Home</a></li>
                 <li class="list"><a class="nav-link" href="labourers.php">Farmers</a></li>
             <li class="list"><a class="nav-link" href="about.php">About us</a></li>
-            <?php if(!empty($_SESSION['Email'])){ ?>
+            <?php if(!empty($_SESSION['Phone'])){ ?>
                 <li class="list"><a class="link-list" href="logout.php">Logout</a></li>
         <?php     } ?>
-        <?php if(empty($_SESSION['Email'])){ ?>
+        <?php if(empty($_SESSION['Phone'])){ ?>
             <li class="nav-item">
                 <a class="nav-link" href="signIn.php">Login</a>
             </li>

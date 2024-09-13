@@ -6,31 +6,14 @@
     height: 550px ;
     overflow: hidden;
 }
-#vid{
-    width: 100%;
-    height: 550px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    /* object-fit: cover; */
-    object-fit: fill;
 
-}
 #nav{
  background-color: rgba(5, 72, 138, 0.3);
     /* position: absolute; */
     left: 0;
     top: 0;
 }
-#olist{
-    list-style-type: none;
-    padding:0;
-    margin: 20%;
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-}
+
 .list{
     transition: transform 2s, border 2s ease;
     border: 2px solid transparent;
@@ -47,7 +30,7 @@
 }
 .list:hover{
 transform: scale(1.1);
-border: 2px solid white;
+border: 2px solid rgb(74, 80, 80);
 }
 
 @media screen and (max-width:660px) {

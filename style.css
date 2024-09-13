@@ -3,12 +3,12 @@ body {
 }
 
 .hero-section {
-    background-color: #f8f9fa;
-    padding: 100px 0;
+    background-color: #9d9fa1;
+    padding:0;
 }
 
 .features-section .card {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #sidebar-wrapper {
