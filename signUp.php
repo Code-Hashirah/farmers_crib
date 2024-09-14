@@ -2,18 +2,58 @@
 $title="Registration Page";
     require_once "header.php";
     require_once "database.php";
+    require_once "Reg-Login-Ctrl.php";
     require_once "userClass.php";
-    require_once "navbar.php";
-?>
+    $error=[];
+    if(isset($_POST['Register'])){
+       if(empty($_POST['Name'])){
+            $error['nameErr']="cannot be empty";
+       }
+       else{
+        $name=$_POST['Name'];
+       }
 
-<!-- Hero Section -->
-<section class="hero-section text-center">
-    <div class="container">
-        <h1 class="display-4">Welcome to <bold class="text-success display-1">F</bold>armers  <bold class="text-warning display-1">C</bold>rib</h1>
-        <p class="lead">Outsource your farm labour needs efficiently and effectively.</p>
-        <a href="signUp.php" class="btn btn-primary btn-lg">Get Started</a>
-    </div>
-</section>
+       if(empty($_POST['Address'])){
+        $error['addErr']="cannot be empty";
+         }
+        else{
+            $address=$_POST['Address'];
+        }
+       
+       if(empty($_POST['Phone'])){
+        $error['phoneErr']="cannot be empty";
+         }
+         else{
+            $phone=$_POST['Phone'];
+         }
+        
+         if(empty($_POST['Password'])){
+            $error['passErr']="Password ";
+         }
+         else{
+            $password=$_POST['Password'];
+         }
+         if($_POST['Re-password']!=$_POST['Password']){
+            $error['confirmErr']="Passwords do not match";
+         }
+        $image=$_FILES['Image']['name'];
+        $tmp_name=$_FILES['Image']['tmp_name'];
+        $path='files/'.$image;
+        $img_ext=pathinfo($path,PATHINFO_EXTENSION);
+        if($img_ext!='jpg' && $img_ext!="png" && $img_ext!="jpeg" && $img_ext!="gif"){
+            $error['imgErr']="*Invalid file type";
+        }
+            $picPath=move_uploaded_file($tmp_name,$path);
+            $register=new User();
+            // decaling again o 
+            $name=$_POST['Name'];
+            $address=$_POST['Address'];
+            $role="Client";
+            $phone=$_POST['Phone'];
+            $password=$_POST['Password'];
+            $register->signUp_user($name, $address, $phone, $password, $path, $role);
+    }
+?>
 
 <body>
 
@@ -21,21 +61,61 @@ $title="Registration Page";
     <!-- Registration Form -->
 <div class="container mt-5 col-6">
     <h2 class="text-centre">Register</h2>
-    <form id="registerForm">
+    <form id="registerForm" action="signUp.php" method="post" enctype="multipart/form-data">
         <div class="form-group my-3">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+            <label for="username">Name</label>
+            <input name="Name"  value="<?php echo array_key_exists('Name',$_POST)? $_POST['Name']: ''  ?>" type="text" class="form-control" id="username" placeholder="Enter name" >
+            <label for="" class="text-danger"> 
+            <?php 
+            echo array_key_exists('nameErr',$error)?$error['nameErr']: '<span class="text-success">Good</span>'
+            ?>    
+            </label>
         </div>
         <div class="form-group my-3">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+            <label for="email">Phone number</label>
+            <input name="Phone" value="<?php echo array_key_exists('Phone',$_POST)? $_POST['Phone']: ''  ?>" type="tel" class="form-control" id="email" placeholder="Phone" >
+            <label for="" class="text-danger"> 
+            <?php 
+            echo array_key_exists('phoneErr',$error)?$error['phoneErr']: '<span class="text-success">Good</span>'
+            ?>    
+            </label>
         </div>
         <div class="form-group my-3">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" required>
+            <input name="Password" value="<?php echo array_key_exists('Password',$_POST)? $_POST['Password']: ''  ?>"  type="password" class="form-control" id="password" placeholder="Password" >
+            <label for="" class="text-danger"> 
+            <?php 
+            echo array_key_exists('passErr',$error)?$error['passErr']: '<span class="text-success">Good</span>'
+            ?>    
+            </label>
         </div>
-        <button type="submit" class="btn btn-primary my-3">Register</button>
+        <div class="form-group my-3">
+            <label for="password">Re-enterPassword</label>
+            <input name="Re-password"  type="password" class="form-control" id="password" placeholder="Re-type Password" >
+            <label for="" class="text-danger"> 
+            <?php 
+            echo array_key_exists('confirmErr',$error)?$error['confirmErr']: ' '
+            ?>    
+            </label>
+        </div>
+
+        <div class="form-group my-3">
+            <label for="password">Address</label>
+            <input name="Address" value="<?php echo array_key_exists('Address',$_POST)? $_POST['Address']: ''  ?>" type="text"  class="form-control" id="password" placeholder="address" >
+            <label for="" class="text-danger"> 
+            <?php 
+            echo array_key_exists('addErr',$error)?$error['addErr']: '<span class="text-success">Good</span>'
+            ?>    
+            </label>
+        </div>
+
+        <div class="form-group my-3">
+            <label for="password">Profile pic</label>
+            <input name="Image" type="file" class="form-control" id="password" placeholder="file" >
+        </div>
+        <button type="submit" name="Register" class="btn btn-primary my-3">Get started</button>
         <a href="index.php" class="btn btn-danger my-3">Cancel</a>
+        <p>Already have an account? <a href="signIn.php" class="btn text-success">Sign in</a></p>
     </form>
 </div>
 

@@ -1,7 +1,7 @@
 <?php
     require_once "header.php";
-    // require_once "database.php";
-    // require_once "productClass.php";
+    require_once "database.php";
+    require_once "isAuth.php";
     require_once "navbar.php";
 ?>
     <style>

@@ -18,33 +18,67 @@ class User extends Database{
     //------------------------------------
     //add user labourer method
     function add_labourer($name, $address, $phone, $password, $image, $role){
-        $hashedPasswrd=password_hash($password, PASSWORD_DEFAULT);
-        $sqlComd="INSERT INTO users (name,address,phone,password, image,role)
-         VALUES(?,?,?,?,?,?)";
-         $preStmnt=$this->connection->prepare($sqlComd);
-         if($preStmnt){
-            $preStmnt->bind_param('ssssss', $name,$address,$phone,$password,$image, $role);
-            $preStmnt->execute();
-            header:"location";
-         }
-         else{
-            echo"Unable to Register at the moment";
-         }
+        // Correctly hash the password
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+        // SQL query
+        $sqlComd = "INSERT INTO users (name, address, phone, password, image, role) VALUES (?, ?, ?, ?, ?, ?)";
+        $preStmnt = $this->connection->prepare($sqlComd);
+    
+        // Check if the statement is prepared successfully
+        if ($preStmnt) {
+            // Bind parameters (use $hashedPassword, not $password)
+            $preStmnt->bind_param('ssssss', $name, $address, $phone, $hashedPassword, $image, $role);
+            
+            // Execute the statement
+            $result = $preStmnt->execute();
+    
+            // Check if execution was successful
+            if ($result) {
+                echo "Success";
+            } else {
+                // Show the actual error message
+                echo "Execution failed: " . $preStmnt->error;
+            }
+        } else {
+            // Show the error if the statement couldn't be prepared
+            echo "Error in preparing statement: " . $this->connection->error;
+        }
     }
+    
 
-    function add_user($name, $address, $phone, $password, $image, $role){
-        $hashedPasswrd=password_hash($password, PASSWORD_DEFAULT);
-        $sqlComd="INSERT INTO users (name,address,phone,password, image,role)
-         VALUES(?,?,?,?,?,?)";
-         $preStmnt=$this->connection->prepare($sqlComd);
-         if($preStmnt){
-            $preStmnt->bind_param('ssssss', $name,$address,$phone,$hashedPassword,$image, $role);
-            $preStmnt->execute();
-         }
-         else{
-            echo"***Unable to Register at the moment****";
-         }
+
+    function signUp_user($name, $address, $phone, $password, $image, $role){
+        // Correct the typo in the password hashing variable
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+        // SQL query
+        $sqlComd = "INSERT INTO users (name, address, phone, password, image, role) VALUES (?, ?, ?, ?, ?, ?)";
+        $preStmnt = $this->connection->prepare($sqlComd);
+    
+        // Check if the statement is prepared successfully
+        if ($preStmnt) {
+            // Bind parameters (6 placeholders: 6 variables)
+            $preStmnt->bind_param('ssssss', $name, $address, $phone, $hashedPassword, $image, $role);
+            
+            // Execute the statement
+            $result = $preStmnt->execute();
+    
+            // Check if execution was successful
+            if ($result) {
+                echo "success";
+            } else {
+                // Show the actual error message
+                echo "Execution failed: " . $preStmnt->error;
+            }
+        } else {
+            // Show the error if the statement couldn't be prepared
+            echo "Error in preparing statement: " . $this->connection->error;
+        }
     }
+    
+// **********************
+
 
     function login($email, $passwored){
         session_start();
