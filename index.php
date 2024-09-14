@@ -35,10 +35,10 @@ $title="Home Page";
     <img src="assets/farm1.webp" alt="farm1" class="d-block img w-100 h-25">
     </div>
     <div class="carousel-item">
-    <img src="assets/farm2.webp" alt="farm2" class="d-block img img w-100 h-25">
+    <img src="assets/farm5.webp" alt="farm2" class="d-block img img w-100 h-25">
     </div>
     <div class="carousel-item">
-    <img src="assets/farm3.webp" alt="farm3" class="d-block img img w-100 h-25">
+    <img src="assets/farm6.webp" alt="farm3" class="d-block img img w-100 h-25">
     </div>
   </div>
 
@@ -63,7 +63,7 @@ $title="Home Page";
                     <div class="card-body">
                         <!-- <button class="btn btn-primary">Bloom</button> -->
                         <h5 class="card-title">Find Skilled Laborers</h5>
-                        <img class="card-img top" src="assets/farm4.webp" alt="farm image">
+                        <img class="card-img top" src="assets/farm2.webp" alt="farm image">
                         <p class="card-text">Access a database of vetted and experienced farm workers.</p>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ $title="Home Page";
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Easy Scheduling</h5>
-                        <img class="card-img top" src="assets/farm5.webp" alt="farm image">
+                        <img class="card-img top" src="assets/farm1.webp" alt="farm image">
                         <p class="card-text">Schedule laborers according to your farm's needs and timeline.</p>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ $title="Home Page";
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Secure Enough Manpower</h5>
-                        <img class="card-img top" src="assets/farm6.webp" alt="farm image">
+                        <img class="card-img top" src="assets/farm4.webp" alt="farm image">
                         <p class="card-text">Ensure reliable workers and grow your farm with quick and effective steps</p>
                     </div>
                 </div>

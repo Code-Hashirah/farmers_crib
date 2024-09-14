@@ -1,5 +1,9 @@
 <?php
-require_once "header.php";
+$title="Login Page";
+    require_once "header.php";
+    require_once "database.php";
+    require_once "userClass.php";
+    require_once "navbar.php";
 ?>
 
 <!-- Login Form -->
