@@ -3,7 +3,7 @@ $title="Login Page";
     require_once "header.php";
     require_once "database.php";
     require_once "userClass.php";
-    require_once "Reg-Login-Ctrl.php";
+    // require_once "Reg-Login-Ctrl.php";
 ?>
 
 <main class="row">
@@ -13,8 +13,8 @@ $title="Login Page";
     <h2>Login</h2>
     <form id="loginForm">
         <div class="form-group my-2">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+            <label for="email">Phone Number</label>
+            <input type="tel" class="form-control" id="email" placeholder="Enter email" required>
         </div>
         <div class="form-group my-2">
             <label for="password">Password</label>

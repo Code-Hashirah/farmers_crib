@@ -35,7 +35,8 @@ class User extends Database{
     
             // Check if execution was successful
             if ($result) {
-                echo "Success";
+                echo "<b class='text-success'>Success</b>";
+    
             } else {
                 // Show the actual error message
                 echo "Execution failed: " . $preStmnt->error;
@@ -66,7 +67,8 @@ class User extends Database{
     
             // Check if execution was successful
             if ($result) {
-                echo "success";
+                echo "<b class='text-success'>Success</b>";
+                header('loaction:signIn.php');
             } else {
                 // Show the actual error message
                 echo "Execution failed: " . $preStmnt->error;
@@ -85,7 +87,7 @@ class User extends Database{
         $sqlLogin="SELECT phone,password,id,role FROM users WHERE phone=?";
         $statement=$this->connection->prepare($sqlLogin);
         if($statement){
-            $statement->bind_param('s', $email);
+            $statement->bind_param('s', $phone);
             $statement->execute();
             $result=$statement->get_result();
             if($result->num_rows){
@@ -94,7 +96,7 @@ class User extends Database{
                 if(password_verify($password,$DBpassword)){
                     $_SESSION['Phone']=$phone;
                     $_SESSION['id']=$DBUser['ID'];
-                    header('Location:index.php');
+                    header('Location:labourers.php');
                 }
                 else{
                     echo "Error";
