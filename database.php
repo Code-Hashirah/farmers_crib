@@ -13,7 +13,7 @@ class Database{
             die("Unable to establish connection!".$this->connection->connect_error);
         }
         else{
-            echo "Database Connected Successfuly!";
+            // echo "Database Connected Successfuly!";
         }
     }
 

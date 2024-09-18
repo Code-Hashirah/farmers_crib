@@ -1,4 +1,8 @@
 <!-- Navbar -->
+<?php require "header.php" ;
+    session_start();
+    // echo $_SESSION['Phone'];
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light top-0">
     <a class="navbar-brand text-bg-success rounded-2" href="index.php">Farmers Crib</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +14,7 @@
                 <li class="list"><a class="nav-link" href="labourers.php">Farmers</a></li>
             <li class="list"><a class="nav-link" href="about.php">About us</a></li>
             <?php if(!empty($_SESSION['Phone'])){ ?>
-                <li class="list"><a class="link-list" href="logout.php">Logout</a></li>
+                <li class="list"><a class="nav-link" href="logout.php">Logout</a></li>
         <?php     } ?>
         <?php if(empty($_SESSION['Phone'])){ ?>
             <li class="nav-item">

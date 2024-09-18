@@ -82,7 +82,7 @@ class User extends Database{
 // **********************
 
 
-    function login($email, $passwored){
+    function login($phone, $password){
         session_start();
         $sqlLogin="SELECT phone,password,id,role FROM users WHERE phone=?";
         $statement=$this->connection->prepare($sqlLogin);

@@ -3,7 +3,28 @@ $title="Login Page";
     require_once "header.php";
     require_once "database.php";
     require_once "userClass.php";
-    // require_once "Reg-Login-Ctrl.php";
+    require_once "Reg-Login-Ctrl.php";
+$errorLog=[];
+if(isset($_POST['Login'])){
+  if(empty($_POST['Phone'])){
+    $error['phoneErr']="cannot be empty";
+     }
+     else{
+        $phone=$_POST['Phone'];
+     }
+
+     if(empty($_POST['Password'])){
+      $error['passErr']="Password ";
+   }
+   else{
+      $password=$_POST['Password'];
+   }
+
+   $sign_In=new User();
+   $phone=$_POST['Phone'];
+   $password=$_POST['Password'];
+   $sign_In->login($phone,$password);
+}
 ?>
 
 <main class="row">
@@ -11,16 +32,16 @@ $title="Login Page";
 <!-- Login Form -->
 <div class="container mt-5 col-6">
     <h2>Login</h2>
-    <form id="loginForm">
+    <form id="loginForm" action="signIn.php" method="post">
         <div class="form-group my-2">
             <label for="email">Phone Number</label>
-            <input type="tel" class="form-control" id="email" placeholder="Enter email" required>
+            <input type="tel" name="Phone" class="form-control" id="email" placeholder="Enter Phone number here.." required>
         </div>
         <div class="form-group my-2">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" required>
+            <input type="password" name="Password" class="form-control" id="password" placeholder="Password" required>
         </div>
-        <button type="submit" class="btn btn-primary my-3">Continue</button>
+        <button type="submit" name="Login" class="btn btn-primary my-3">Continue</button>
         <a href="index.php" class="btn btn-danger my-3">Cancel</a>
 
         <p>Don't have an account yet? <a href="signUp.php" class="btn text-success">Sign Up</a></p>

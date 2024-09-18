@@ -1,8 +1,10 @@
 <?php
+    $title="Hire Page";
     require_once "header.php";
     require_once "database.php";
-    require_once "isAuth.php";
     require_once "navbar.php";
+    require_once "isAuth.php";
+
 ?>
     <style>
         .rating {
