@@ -1,34 +1,52 @@
 <?php
-    $title="Hire Page";
-    require_once "header.php";
-    require_once "database.php";
-    require_once "navbar.php";
-    require_once "isAuth.php";
+$title = "Hire Page";
+require_once "header.php";
+require_once "database.php"; // Database connection
+require_once "navbar.php";
+require_once "isAuth.php"; // Ensure user is authenticated
+
+// Create an instance of the Database class and get the connection
+$database = new Database();
+$db = $database->getConnection(); // Retrieve the database connection
+
+// Fetch labourers from the database
+$query = "
+    SELECT u.id, u.name, u.phone, u.image, IFNULL(AVG(r.rating), 0) AS avg_rating
+    FROM users u
+    LEFT JOIN farmer_ratings r ON u.id = r.farmer_id
+    WHERE u.role = 'Labourer'
+    GROUP BY u.id
+";
+
+// Run the query and check for errors
+$result = $db->query($query);
+if (!$result) {
+    die("Database query failed: " . $db->error);
+}
 
 ?>
-    <style>
-        .rating {
-            color: #ffd700;
-            cursor: pointer;
-        }
-    </style>
+
+<style>
+    .rating {
+        color: #ffd700;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
 
-<!-- Navbar -->
-
-<!-- Farmers List Section -->
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Farmers Available for Work</h2>
+    <h2 class="text-center mb-4">Labourers Available for Work</h2>
     <div class="row">
-        <!-- Farmer Card -->
+        <?php while ($labourer = $result->fetch_assoc()): ?>
         <div class="col-md-4">
             <div class="card mb-4">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Farmer Image">
+                <img src="<?= htmlspecialchars($labourer['image']) ?>" class="card-img-top" alt="Labourer Image">
                 <div class="card-body">
-                    <h5 class="card-title">John Doe</h5>
-                    <p class="card-text">Experienced farmer specializing in organic farming and sustainable practices.</p>
-                    <div class="rating">
+                    <h5 class="card-title"><?= htmlspecialchars($labourer['name']) ?></h5>
+                    <p class="card-text"><?= htmlspecialchars($labourer['phone']) ?></p>
+                    <p><strong>Average Rating: <span id="avg-rating-<?= $labourer['id'] ?>"><?= round($labourer['avg_rating'], 1) ?></span></strong></p>
+                    <div class="rating" data-labourer-id="<?= $labourer['id'] ?>">
                         <span data-rating="1">&#9733;</span>
                         <span data-rating="2">&#9733;</span>
                         <span data-rating="3">&#9733;</span>
@@ -38,64 +56,57 @@
                 </div>
             </div>
         </div>
-        <!-- Another Farmer Card -->
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Farmer Image">
-                <div class="card-body">
-                    <h5 class="card-title">Jane Smith</h5>
-                    <p class="card-text">Specializes in crop management and has extensive knowledge in pest control.</p>
-                    <div class="rating">
-                        <span data-rating="1">&#9733;</span>
-                        <span data-rating="2">&#9733;</span>
-                        <span data-rating="3">&#9733;</span>
-                        <span data-rating="4">&#9733;</span>
-                        <span data-rating="5">&#9733;</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Another Farmer Card -->
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Farmer Image">
-                <div class="card-body">
-                    <h5 class="card-title">Robert Johnson</h5>
-                    <p class="card-text">Expert in greenhouse farming and irrigation systems.</p>
-                    <div class="rating">
-                        <span data-rating="1">&#9733;</span>
-                        <span data-rating="2">&#9733;</span>
-                        <span data-rating="3">&#9733;</span>
-                        <span data-rating="4">&#9733;</span>
-                        <span data-rating="5">&#9733;</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endwhile; ?>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="app.js"></script>
-<script>
-// JavaScript to handle rating
-document.querySelectorAll('.rating span').forEach(star => {
-    star.addEventListener('click', function() {
-        const rating = this.getAttribute('data-rating');
-        alert(`You rated this farmer ${rating} stars!`);
-        
-        // Clear existing ratings
-        this.parentNode.querySelectorAll('span').forEach(s => s.style.color = '#ffd700');
 
-        // Highlight selected ratings
-        for (let i = 0; i < rating; i++) {
-            this.parentNode.children[i].style.color = '#ff8000';
-        }
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Use event delegation for better performance
+    document.querySelectorAll('.rating').forEach(ratingDiv => {
+        ratingDiv.addEventListener('click', function(e) {
+            if (e.target.tagName === 'SPAN') {
+                const rating = e.target.getAttribute('data-rating');
+                const labourerId = this.getAttribute('data-labourer-id');
+
+                // Send rating to the server via AJAX
+                const formData = new FormData();
+                formData.append('labourer_id', labourerId);
+                formData.append('rating', rating);
+
+                fetch('rate_labourer.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update the average rating displayed on the page
+                        document.getElementById(`avg-rating-${labourerId}`).innerText = data.new_average;
+                        alert(`You rated this labourer ${rating} stars!`);
+                    } else {
+                        alert('Error submitting rating. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+                // Highlight selected ratings
+                this.querySelectorAll('span').forEach(s => s.style.color = '#ffd700');
+                for (let i = 0; i < rating; i++) {
+                    this.children[i].style.color = '#ff8000';
+                }
+            }
+        });
     });
 });
 </script>
+
 <?php
 require_once "footer.php";
 ?>
