@@ -66,7 +66,7 @@ if(isset($_POST['Add-labourer'])){
                   <button class="btn btn-primary" name="Add-labourer" type="submit">Add to Records</button>
                 </div>
                 <div class="input">
-                   <a href="admin-dashboard.php" class="cancel">Cancel</a>
+                   <a href="admin-dash.php" class="cancel">Cancel</a>
                 </div>
             </form>
        

@@ -2,7 +2,7 @@
 <i class="fa fa-user text-success" aria-hidden="true"></i>
 <h2 class="text-white">Admin</h2>
         <ul>
-            <li><a class="link" onclick="bghover()" href="index.php"><i class="fas fa-home" aria-hidden="true"></i>Home</a></li>
+            <li><a class="link" onclick="bghover()" href="../index.php"><i class="fas fa-home" aria-hidden="true"></i>Home</a></li>
             <li><a class="link" href="admin-dash.php"><i class="fa fa-dashboard" aria-hidden="true"></i>Dashboard</a></li>
             <li><a class="link" href="addLabourers.php"><i class="fa fa-cart-plus" aria-hidden="true"></i>Add Labourers</a></li>
             <li><a class="link" href="labourers.php"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Labourers</a></li>
