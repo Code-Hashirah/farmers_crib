@@ -41,7 +41,7 @@ if (!$result) {
         <?php while ($labourer = $result->fetch_assoc()): ?>
         <div class="col-md-4">
             <div class="card mb-4">
-                <img src="<?= htmlspecialchars($labourer['image']) ?>" class="card-img-top" alt="Labourer Image">
+                <img src="<?php echo "files/".$labourer['image']; ?>" class="card-img-top w-50 h-50" alt="Labourer Image">
                 <div class="card-body">
                     <h5 class="card-title"><?= htmlspecialchars($labourer['name']) ?></h5>
                     <p class="card-text"><?= htmlspecialchars($labourer['phone']) ?></p>

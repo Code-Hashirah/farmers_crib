@@ -149,7 +149,12 @@ function get_One_Labourer($id){
     $labourers=$result;
     return $labourers;
  }
+}
 
+function delete_labourer($id){
+    $sqlCmd="DELETE FROM users WHERE id=$id";
+    $deleteQuery=mysqli_query($this->connection, $sqlCmd);
+    header("Location:labourers.php");
 }
 
 }
