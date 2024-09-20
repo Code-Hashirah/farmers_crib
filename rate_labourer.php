@@ -1,12 +1,14 @@
 <?php
-require_once "database.php"; // Database connection
+require_once "database.php";
 
 // Get the POST data
 $labourer_id = intval($_POST['labourer_id']);
 $rating = intval($_POST['rating']);
 
-// Validate inputs
+// Validate input
 if ($labourer_id > 0 && $rating >= 1 && $rating <= 5) {
+    $db = (new Database())->getConnection();
+
     // Insert the rating into the database
     $stmt = $db->prepare("INSERT INTO farmer_ratings (farmer_id, rating) VALUES (?, ?)");
     $stmt->bind_param("ii", $labourer_id, $rating);
@@ -24,6 +26,7 @@ if ($labourer_id > 0 && $rating >= 1 && $rating <= 5) {
     // Return the new average rating as JSON
     echo json_encode(['success' => true, 'new_average' => $new_average]);
 } else {
+    // Return an error if the input is invalid
     echo json_encode(['success' => false]);
 }
 ?>

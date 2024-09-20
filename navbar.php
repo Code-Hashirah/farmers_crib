@@ -3,7 +3,7 @@
     session_start();
     // echo $_SESSION['Phone'];
 ?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light top-0">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <a class="navbar-brand text-bg-success rounded-2" href="index.php">Farmers Crib</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,23 @@
                 <a class="nav-link" href="signUp.php">Register</a>
             </li>
         <?php   } ?>
-            
+    
         </ul>
+        <span class="rounded-2 p-2 text-info d-flex">
+            
+        <?php
+        $name;
+        if(empty($_SESSION['Name'])){ 
+            echo "Guest";
+        }
+            else{
+            $image=$_SESSION['Image'];
+            $name=$_SESSION['Name'];
+            // echo $name; ?>
+            <img src=<?php echo $image ?> style="width:50px; height:50px;" class="rounded-circle me-3" alt='image'>
+    
+        <?php }
+        ?>
+        </span>
     </div>
 </nav>

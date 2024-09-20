@@ -57,7 +57,7 @@ $title="Home Page";
 <section class="features-section py-5">
     <div class="container">
         <div class="row">
-            <a href="proceed.php" class="col-md-4">
+            <a href="proceed.php" class="col-md-4 text-decoration-none">
             <div>
                 <div class="card">
                     <div class="card-body">
@@ -70,7 +70,7 @@ $title="Home Page";
             </div>
             </a>
             
-            <a href="proceed.php" class="col-md-4">
+            <a href="proceed.php" class="col-md-4 text-decoration-none">
                 <div>
                 <div class="card">
                     <div class="card-body">
@@ -82,7 +82,7 @@ $title="Home Page";
             </div>
         </a>
             
-            <a href="proceed.php" class="col-md-4">
+            <a href="proceed.php" class="col-md-4 text-decoration-none">
             <div>
                 <div class="card">
                     <div class="card-body">

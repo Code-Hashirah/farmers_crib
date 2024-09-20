@@ -67,7 +67,7 @@ class User extends Database{
     
             // Check if execution was successful
             if ($result) {
-                echo "<b class='text-success'>Success</b>";
+                echo "<b class='text-success aler-success'>Success</b>";
                 header('loaction:signIn.php');
             } else {
                 // Show the actual error message
@@ -84,7 +84,7 @@ class User extends Database{
 
     function login($phone, $password){
         session_start();
-        $sqlLogin="SELECT phone,password,id,role FROM users WHERE phone=?";
+        $sqlLogin="SELECT phone,password,id,role,name, image FROM users WHERE phone=?";
         $statement=$this->connection->prepare($sqlLogin);
         if($statement){
             $statement->bind_param('s', $phone);
@@ -95,7 +95,9 @@ class User extends Database{
                 $DBpassword=$DBUser['password'];
                 if(password_verify($password,$DBpassword)){
                     $_SESSION['Phone']=$phone;
-                    $_SESSION['id']=$DBUser['ID'];
+                    $_SESSION['id']=$DBUser['id'];
+                    $_SESSION['Name']=$DBUser['name'];
+                    $_SESSION['Image']=$DBUser['image'];
                     header('Location:labourers.php');
                 }
                 else{

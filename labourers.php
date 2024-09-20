@@ -54,6 +54,11 @@ if (!$result) {
                         <span data-rating="5">&#9733;</span>
                     </div>
                 </div>
+                <div>
+                     <a  class="text-decoration-none btn btn-outline-primary" href=" <?php echo "https://wa.me/+234".$labourer['phone'];?>">
+                      Hire
+                    
+                    </a></div>
             </div>
         </div>
         <?php endwhile; ?>
